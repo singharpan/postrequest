@@ -1,0 +1,45 @@
+<html>
+<head>
+	<title>POST Request</title>
+</head>
+<body>
+	<h1>This is a Post Request</h1>
+	<button id="btn">Post it</button>
+
+
+	<script>
+		const data={
+			name:"John",
+			city:"New York"
+		}
+
+
+document.getElementById("btn").onclick=()=>{
+
+const url="http://localhost:5000/sent-data";
+
+fetch(url,{
+
+method:"post",
+body:JSON.stringify(data),
+header:{
+	'Content-Type':'application/json'
+}
+
+
+}).then(res=>res.json())
+.then(res2=>console.log(res2))
+
+
+
+//server is hosted on current "url"
+//method is "post"
+//data is sent by attaching into body
+//data is converted into string before sending to Server
+//header is like meta data...tells which type of data client is sending
+//response from server is coming as "res2"
+
+		}
+	</script>
+	</body>
+</html>
